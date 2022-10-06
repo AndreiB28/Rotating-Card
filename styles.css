@@ -1,0 +1,145 @@
+:root {
+  --primary: #09ac9b;
+  --secondary: #013f36;
+  --dark: #212121;
+  --light: #f3f3f3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: monospace, sans-serif;
+  width: 100%;
+  min-height: 100vh;
+  background-image: linear-gradient(#68dbb8, #c1bdde);
+}
+
+.card {
+  margin: 100px auto 0;
+  width: 400px;
+  height: 600px;
+  perspective: 1000px;
+}
+
+.card__inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  position: relative;
+}
+
+.card__inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card__face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 3px 18px 3px rgba(0, 0, 0, 0.3);
+}
+
+.card__face--front {
+  background-image: linear-gradient(
+    to bottom right,
+    var(--primary),
+    var(--secondary)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__face--front h2 {
+  color: #fff;
+  font-size: 33px;
+  transition: .3s;
+}
+
+.card__face--front h2:hover{
+    color: var(--primary);
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.3);
+    padding: 0 8px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.card__face--back {
+  background-color: var(--light);
+  transform: rotateY(180deg);
+}
+
+.card__content {
+  width: 100%;
+  height: 100%;
+}
+
+.card__header {
+  position: relative;
+  padding: 30px 30px 40px;
+}
+
+.card__header::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  border-radius: 0 0 50% 0;
+  background-image: linear-gradient(
+    to bottom right,
+    var(--primary) 10%,
+    var(--secondary) 115%
+  );
+}
+
+.profile {
+  display: block;
+  width: 125px;
+  height: 125px;
+  margin: 0 auto 30px;
+  border-radius: 50%;
+  border: 3px solid #009688;
+  object-fit: cover;
+}
+
+.card__header h2 {
+    color: var(--light);
+    font-size: 30px;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.card__body {
+    padding: 30px; 
+}
+
+.card__body h3 {
+    color: var(--dark);
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--primary);
+    text-align: center;
+}
+
+.card__body p {
+    color: var(--dark);
+    padding: 10px 0;;
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: center;
+    border-bottom: 1px solid var(--primary);
+}
